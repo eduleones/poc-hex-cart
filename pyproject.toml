@@ -24,6 +24,7 @@ authors = [ "" ]
   freezegun = "^1.2.0"
   hiredis = "^2.0.0"
   httpx = "^0.22.0"
+  dependency-injector = "^4.39.1"
 
     [tool.poetry.dependencies.pydantic]
     version = "^1.8.2"
