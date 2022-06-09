@@ -4,7 +4,7 @@ import pytest
 
 from src.domain.entities.cart import Cart
 from src.domain.exceptions.cart_exception import CartNotFoundException
-from src.domain.services.get_cart import GetCartService
+from src.domain.use_cases.get_cart import GetCartService
 
 
 def test_get_cart_service(cart_repository_service, reseller_cart):

@@ -1,9 +1,9 @@
-from .create_cart_service import ICreateCartService
-from .get_cart_service import IGetCartService
-from .set_item_service import ISetItemService
+from .create_cart import CreateCartInterface
+from .get_cart import GetCartInterface
+from .set_item import SetItemInterface
 
 __all__ = (
-    "ICreateCartService",
-    "IGetCartService",
-    "ISetItemService",
+    "CreateCartInterface",
+    "GetCartInterface",
+    "SetItemInterface",
 )

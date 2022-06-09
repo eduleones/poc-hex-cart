@@ -1,10 +1,12 @@
 from src.adapters.dto.error_dto import ErrorDTO
 from src.adapters.dto.inventory_dto import InventoryDTO
 from src.cross.enums import CartErrorEnum
-from src.domain.ports.output.inventory_resource import IInventoryResource
+from src.domain.ports.output.inventory_resource import (
+    InventoryResourceInterface,
+)
 
 
-class MockCustomerStockApi(IInventoryResource):
+class MockCustomerStockApi(InventoryResourceInterface):
     def get_stock_by_sku(self, sku: str) -> dict:
 
         inventory = InventoryDTO(sku=sku, quantity=2)

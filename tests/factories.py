@@ -2,7 +2,7 @@ from src.adapters.api.v1.dto.create_cart_dto import CreateCartDTO
 from src.cross.containers import RepositoryContainer
 from src.cross.enums import CartTypeEnum, ChannelEnum
 from src.domain.entities.cart import Cart
-from src.domain.services.create_cart import CreateCartService
+from src.domain.use_cases.create_cart import CreateCartService
 
 cart_repository = RepositoryContainer.mock_cart_repository()
 

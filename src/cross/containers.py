@@ -12,16 +12,16 @@ from src.adapters.external_resources.product.mock_product_api import (
     MockProductApi,
 )
 from src.domain.ports.input import (
-    ICreateCartService,
-    IGetCartService,
-    ISetItemService,
+    CreateCartInterface,
+    GetCartInterface,
+    SetItemInterface,
 )
 from src.domain.ports.output import (
-    ICartRepository,
-    IInventoryResource,
-    IProductResource,
+    CartRepositoryInterface,
+    InventoryResourceInterface,
+    ProductResourceInterface,
 )
-from src.domain.services import (
+from src.domain.use_cases import (
     CreateCartService,
     CustomerSetItemService,
     GetCartService,
@@ -30,44 +30,46 @@ from src.domain.services import (
 
 
 class RepositoryContainer(containers.DeclarativeContainer):
-    cart_respository: ICartRepository = providers.Singleton(
+    cart_respository: CartRepositoryInterface = providers.Singleton(
         RedisCartRepository
     ).add_args(1)
 
-    mock_cart_repository: ICartRepository = providers.Singleton(
+    mock_cart_repository: CartRepositoryInterface = providers.Singleton(
         MockRedisCartRepository
     ).add_args(1)
 
 
 class ExternalResourcesContainer(containers.DeclarativeContainer):
-    reseller_inventory_resource: IInventoryResource = providers.Factory(
-        MockResellerStockApi
+    reseller_inventory_resource: InventoryResourceInterface = (
+        providers.Factory(MockResellerStockApi)
     )
-    customer_inventory_resource: IInventoryResource = providers.Factory(
-        MockCustomerStockApi
+    customer_inventory_resource: InventoryResourceInterface = (
+        providers.Factory(MockCustomerStockApi)
     )
-    product_resource: IProductResource = providers.Factory(MockProductApi)
+    product_resource: ProductResourceInterface = providers.Factory(
+        MockProductApi
+    )
 
 
 class ServicesContainer(containers.DeclarativeContainer):
     # Create Cart Service
-    create_cart_service: ICreateCartService = providers.Factory(
+    create_cart_service: CreateCartInterface = providers.Factory(
         CreateCartService,
         cart_repository=RepositoryContainer.mock_cart_repository,
     )
-    mock_create_cart_service: ICreateCartService = providers.Factory(
+    mock_create_cart_service: CreateCartInterface = providers.Factory(
         CreateCartService,
         cart_repository=RepositoryContainer.mock_cart_repository,
     )
 
     # Get Cart Service
-    get_cart_service: IGetCartService = providers.Factory(
+    get_cart_service: GetCartInterface = providers.Factory(
         GetCartService,
         cart_repository=RepositoryContainer.mock_cart_repository,
     )
 
     # Set Item Service
-    reseller_set_item_service: ISetItemService = providers.Factory(
+    reseller_set_item_service: SetItemInterface = providers.Factory(
         ResellerSetItemService,
         cart_repository=RepositoryContainer.mock_cart_repository,
         inventory_resource=(
@@ -76,7 +78,7 @@ class ServicesContainer(containers.DeclarativeContainer):
         product_resource=ExternalResourcesContainer.product_resource,
     )
 
-    customer_set_item_service: ISetItemService = providers.Factory(
+    customer_set_item_service: SetItemInterface = providers.Factory(
         CustomerSetItemService,
         cart_repository=RepositoryContainer.mock_cart_repository,
         inventory_resource=(

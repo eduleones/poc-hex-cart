@@ -1,11 +1,11 @@
 from abc import ABCMeta, abstractmethod
 
 from src.domain.entities.cart import Cart
-from src.domain.ports.output.cart_repository import ICartRepository
+from src.domain.ports.output.cart_repository import CartRepositoryInterface
 
 
-class IGetCartService(metaclass=ABCMeta):
-    def __init__(self, cart_repository: ICartRepository):
+class GetCartInterface(metaclass=ABCMeta):
+    def __init__(self, cart_repository: CartRepositoryInterface):
         self.cart_repository = cart_repository
 
     @abstractmethod

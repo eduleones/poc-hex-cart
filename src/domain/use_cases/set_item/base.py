@@ -7,13 +7,13 @@ from src.domain.exceptions import (
     OutOfStockException,
     ProductNotFoundException,
 )
-from src.domain.ports.input.set_item_service import ISetItemService
+from src.domain.ports.input.set_item import SetItemInterface
 from src.domain.value_objects.item import Item
 
 logger = logging.getLogger(__name__)
 
 
-class BaseSetItemService(ISetItemService):
+class BaseSetItemService(SetItemInterface):
     def _exception_resource(self, errors: dict, resource_error: dict):
         error: CartErrorEnum = resource_error["error"]
         exception = errors[error]

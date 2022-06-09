@@ -6,7 +6,7 @@ from src.domain.exceptions import (
     OutOfStockException,
     ProductNotFoundException,
 )
-from src.domain.services import CustomerSetItemService, ResellerSetItemService
+from src.domain.use_cases import CustomerSetItemService, ResellerSetItemService
 from src.domain.value_objects.item import Item
 
 

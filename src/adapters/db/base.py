@@ -1,10 +1,10 @@
 from src.adapters.db.serializers import JsonSerializer
 from src.cross.settings import settings
 from src.domain.entities.cart import Cart
-from src.domain.ports.output.cart_repository import ICartRepository
+from src.domain.ports.output.cart_repository import CartRepositoryInterface
 
 
-class BaseCartRepository(ICartRepository):
+class BaseCartRepository(CartRepositoryInterface):
     serializer = JsonSerializer()
 
     def __init__(self, db: int):

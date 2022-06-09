@@ -3,7 +3,7 @@ from abc import ABC, abstractmethod
 from src.domain.entities.cart import Cart
 
 
-class ICartRepository(ABC):
+class CartRepositoryInterface(ABC):
     @abstractmethod
     def get_by_id(self, cart_id: str) -> Cart:
         ...

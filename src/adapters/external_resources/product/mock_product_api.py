@@ -1,10 +1,10 @@
 from src.adapters.dto.error_dto import ErrorDTO
 from src.adapters.dto.product_dto import ProductDTO
 from src.cross.enums import CartErrorEnum
-from src.domain.ports.output.product_resource import IProductResource
+from src.domain.ports.output.product_resource import ProductResourceInterface
 
 
-class MockProductApi(IProductResource):
+class MockProductApi(ProductResourceInterface):
     def search_product_by_sku(self, sku: str) -> dict:
         product = ProductDTO(
             sku="123",

@@ -1,6 +1,6 @@
 from uuid import UUID
 
-from src.domain.services.create_cart import CreateCartService
+from src.domain.use_cases.create_cart import CreateCartService
 
 
 def test_create_reseller_cart_service(
