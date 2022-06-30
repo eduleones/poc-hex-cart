@@ -22,26 +22,28 @@ class BaseSetItemService(SetItemInterface):
         raise exception(message=error.value)
 
     def _validate_product_resource(self, product: dict):
-        errors = {
+        _mapper = {
             CartErrorEnum.CART_ITEM_NOT_FOUND: ProductNotFoundException,
         }
+
         resource_error = product.get("resource_error")
         if not resource_error:
             return
 
-        self._exception_resource(errors, resource_error)
+        self._exception_resource(_mapper, resource_error)
 
     def _validate_stock_resource(self, stock: dict):
-        errors = {
+        _mapper = {
             CartErrorEnum.CART_ITEM_INVALID_INVENTORY: (
                 InventoryNotFoundException
             ),
         }
-        resource_error = stock.get("resource_error")
-        if not resource_error:
+
+        if stock["is_success"]:
             return
 
-        self._exception_resource(errors, resource_error)
+        resource_error = stock.get("error")
+        self._exception_resource(_mapper, resource_error)
 
     def _get_product(self, sku: str):
         product = self.product_resource.search_product_by_sku(sku)
@@ -54,7 +56,7 @@ class BaseSetItemService(SetItemInterface):
         return stock
 
     def _validate_set_item(self, stock, quantity):
-        if quantity > stock["quantity"]:
+        if quantity > stock["data"]["quantity"]:
             raise OutOfStockException
 
     def set_item(self, cart: Cart, sku: str, quantity: int) -> Cart:

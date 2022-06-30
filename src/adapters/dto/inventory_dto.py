@@ -2,10 +2,13 @@ from typing import Optional
 
 from pydantic import BaseModel
 
-from .error_dto import ErrorDTO
+from .base import BaseResultDTO, ErrorDTO
 
 
 class InventoryDTO(BaseModel):
     sku: str
     quantity: Optional[int] = None
-    resource_error: Optional[ErrorDTO] = None
+
+
+class InventoryResultDTO(BaseResultDTO):
+    data: Optional[InventoryDTO] = None

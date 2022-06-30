@@ -1,4 +1,4 @@
-from src.adapters.dto.error_dto import ErrorDTO
+from src.adapters.dto.base import ErrorDTO
 from src.adapters.dto.product_dto import ProductDTO
 from src.cross.enums import CartErrorEnum
 from src.domain.ports.output.product_resource import ProductResourceInterface

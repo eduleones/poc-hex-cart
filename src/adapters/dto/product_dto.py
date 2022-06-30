@@ -2,7 +2,7 @@ from typing import Optional
 
 from pydantic import BaseModel
 
-from .error_dto import ErrorDTO
+from src.adapters.dto.base import ErrorDTO
 
 
 class ProductDTO(BaseModel):
