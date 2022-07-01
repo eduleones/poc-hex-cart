@@ -1,6 +1,6 @@
 import pytest
 
-from src.adapters.api.v1.dto.create_cart_dto import CreateCartDTO
+from src.adapters.api.v1.presentation.create_cart import CreateCartDTO
 from src.cross.enums import CartTypeEnum, ChannelEnum
 
 

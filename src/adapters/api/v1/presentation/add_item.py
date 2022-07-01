@@ -1,5 +1,5 @@
 from pydantic import BaseModel
 
 
-class AddItemDTO(BaseModel):
+class AddItemPresenter(BaseModel):
     quantity: int

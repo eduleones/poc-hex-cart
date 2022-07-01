@@ -1,4 +1,5 @@
 from enum import Enum
+from typing import Dict, Type
 
 
 class ChannelEnum(str, Enum):
@@ -35,3 +36,12 @@ class CartErrorEnum(str, Enum):
     CART_ITEM_PRICE_TOTAL_MIN = "cart_item_price_total_min"
     CART_ITEM_PRICE_TOTAL_ZERO = "cart_item_price_total_zero"
     CART_ITEM_PRICE_TOTAL_INVALID = "cart_item_price_total_invalid"
+
+
+class XPTOException(Exception):
+    ...
+
+
+ErrorMap: Dict[CartErrorEnum, Type[Exception]] = {
+    CartErrorEnum.CART_GENERIC_ERROR: XPTOException
+}

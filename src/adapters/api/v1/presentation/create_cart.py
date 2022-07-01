@@ -4,7 +4,7 @@ from src.cross.enums import CartTypeEnum, ChannelEnum
 from src.domain.entities.cart import Cart
 
 
-class CreateCartDTO(BaseModel):
+class CreateCartPresenter(BaseModel):
     channel: ChannelEnum
     cart_type: CartTypeEnum
 
