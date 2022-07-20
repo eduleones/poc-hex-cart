@@ -2,7 +2,7 @@ from typing import List
 
 from pydantic import BaseModel
 
-from src.domain.entities.cart import Cart
+from src.domain.entities import Cart
 
 
 class ItemResponsePresenter(BaseModel):

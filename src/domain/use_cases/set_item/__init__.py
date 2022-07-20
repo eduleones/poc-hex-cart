@@ -1,7 +1,7 @@
-from .customer import CustomerSetItemService
-from .reseller import ResellerSetItemService
+from .customer import CustomerSetItemUseCase
+from .reseller import ResellerSetItemUseCase
 
 __all__ = (
-    "CustomerSetItemService",
-    "ResellerSetItemService",
+    "CustomerSetItemUseCase",
+    "ResellerSetItemUseCase",
 )

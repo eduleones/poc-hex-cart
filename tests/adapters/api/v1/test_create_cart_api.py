@@ -9,7 +9,6 @@ async def test_create_reseller_cart_api(
     async_client,
     create_reseller_cart_payload,
 ):
-
     response = await async_client.post(
         "/v1/carts", json=create_reseller_cart_payload
     )

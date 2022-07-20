@@ -1,4 +1,5 @@
-from .cart_exception import CartNotFoundException
+from .base import DomainException
+from .cart_exception import CartGenericError, CartNotFoundException
 from .inventory_expection import (
     InventoryNotFoundException,
     OutOfStockException,
@@ -10,4 +11,6 @@ __all__ = (
     "ProductNotFoundException",
     "InventoryNotFoundException",
     "OutOfStockException",
+    "DomainException",
+    "CartGenericError",
 )

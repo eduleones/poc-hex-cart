@@ -1,7 +1,7 @@
 import redis
 
 from src.adapters.db.base import BaseCartRepository
-from src.cross.settings import settings
+from src.settings import settings
 
 
 class RedisCartRepository(BaseCartRepository):

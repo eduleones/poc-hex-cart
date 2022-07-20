@@ -1,9 +1,9 @@
-from .base import BaseException
+from .base import DomainException
 
 
-class InventoryNotFoundException(BaseException):
+class InventoryNotFoundException(DomainException):
     pass
 
 
-class OutOfStockException(BaseException):
+class OutOfStockException(DomainException):
     pass

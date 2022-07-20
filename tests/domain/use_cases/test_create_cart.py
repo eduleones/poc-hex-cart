@@ -1,27 +1,25 @@
 from uuid import UUID
 
-from src.domain.use_cases.create_cart import CreateCartService
 
-
-def test_create_reseller_cart_service(
-    create_reseller_cart_dto, cart_repository_service
+def test_create_reseller_cart_use_case(
+    create_reseller_cart_presenter, create_cart_use_case
 ):
-    cart = CreateCartService(cart_repository_service).create(
-        create_reseller_cart_dto.to_cart()
+    cart = create_cart_use_case.create(
+        create_reseller_cart_presenter.to_cart()
     )
 
     assert isinstance(cart.id, UUID)
-    assert cart.channel == create_reseller_cart_dto.channel
-    assert cart.cart_type == create_reseller_cart_dto.cart_type
+    assert cart.channel == create_reseller_cart_presenter.channel
+    assert cart.cart_type == create_reseller_cart_presenter.cart_type
 
 
-def test_create_customer_cart_service(
-    create_customer_cart_dto, cart_repository_service
+def test_create_customer_cart_use_case(
+    create_customer_cart_presenter, create_cart_use_case
 ):
-    cart = CreateCartService(cart_repository_service).create(
-        create_customer_cart_dto.to_cart()
+    cart = create_cart_use_case.create(
+        create_customer_cart_presenter.to_cart()
     )
 
     assert isinstance(cart.id, UUID)
-    assert cart.channel == create_customer_cart_dto.channel
-    assert cart.cart_type == create_customer_cart_dto.cart_type
+    assert cart.channel == create_customer_cart_presenter.channel
+    assert cart.cart_type == create_customer_cart_presenter.cart_type

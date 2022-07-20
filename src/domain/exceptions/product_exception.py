@@ -1,5 +1,5 @@
-from .base import BaseException
+from .base import DomainException
 
 
-class ProductNotFoundException(BaseException):
+class ProductNotFoundException(DomainException):
     pass

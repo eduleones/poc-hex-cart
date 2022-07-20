@@ -12,7 +12,7 @@ class MockResellerStockApi(InventoryResourceInterface):
 
         if sku == "789":
             result.error = BaseError(
-                CartErrorEnum.CART_ITEM_NOT_FOUND,
+                CartErrorEnum.CART_ITEM_OUT_OF_STOCK,
                 message=f"Sku {sku} not found on Costumers Stock API",
             )
             result.data = None

@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 
-from src.domain.entities.cart import Cart
+from src.domain.entities import Cart
 
 
 class CartRepositoryInterface(ABC):

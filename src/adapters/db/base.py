@@ -1,7 +1,9 @@
+from typing import Optional
+
 from src.adapters.db.serializers import JsonSerializer
-from src.cross.settings import settings
-from src.domain.entities.cart import Cart
+from src.domain.entities import Cart
 from src.domain.ports.output.cart_repository import CartRepositoryInterface
+from src.settings import settings
 
 
 class BaseCartRepository(CartRepositoryInterface):
@@ -14,7 +16,7 @@ class BaseCartRepository(CartRepositoryInterface):
     def create_client(self):
         pass
 
-    def get_by_id(self, cart_id: str) -> Cart:
+    def get_by_id(self, cart_id: str) -> Optional[Cart]:
         raw = self.client.get(cart_id)
         if not raw:
             return None

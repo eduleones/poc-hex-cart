@@ -1,13 +1,13 @@
 import logging
 
-from src.domain.entities.cart import Cart
+from src.domain.entities import Cart
 from src.domain.ports.dtos import InventoryDto, ProductDto
 from src.domain.ports.input.set_item import SetItemInterface
 
 logger = logging.getLogger(__name__)
 
 
-class BaseSetItemService(SetItemInterface):
+class BaseSetItemUseCase(SetItemInterface):
     def _get_product(self, sku: str) -> ProductDto:
         result = self.product_resource.search_product_by_sku(sku)
         if result.data:

@@ -1,15 +1,21 @@
-from src.adapters.api.v1.presentation.create_cart import CreateCartPresenter
-from src.cross.containers import RepositoryContainer
-from src.cross.enums import CartTypeEnum, ChannelEnum
-from src.domain.entities.cart import Cart
-from src.domain.use_cases.create_cart import CreateCartService
+from sqlite3 import adapters
+from typing import Optional
 
-cart_repository = RepositoryContainer.mock_cart_repository()
+from pytest import fixture
+
+from src.adapters.api.containers import TestAdapters, UseCases, get_adapter
+from src.adapters.api.v1.presentation.create_cart import CreateCartPresenter
+from src.cross.enums import CartTypeEnum, ChannelEnum
+from src.domain.entities import Cart
 
 
 def make_cart(
     channel: ChannelEnum = ChannelEnum.APP,
     cart_type: CartTypeEnum = CartTypeEnum.RESELLER,
+    use_cases=None,
 ) -> Cart:
     cart_dto = CreateCartPresenter(channel=channel, cart_type=cart_type)
-    return CreateCartService(cart_repository).create(cart_dto.to_cart())
+    if use_cases is None:
+        use_cases = UseCases(adapters=TestAdapters())
+
+    return use_cases.create_cart().create(cart_dto.to_cart())

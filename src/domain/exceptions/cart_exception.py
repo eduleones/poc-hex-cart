@@ -1,5 +1,9 @@
-from .base import BaseException
+from .base import DomainException
 
 
-class CartNotFoundException(BaseException):
+class CartNotFoundException(DomainException):
     pass
+
+
+class CartGenericError(DomainException):
+    ...

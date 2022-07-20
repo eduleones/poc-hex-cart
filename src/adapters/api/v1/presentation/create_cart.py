@@ -1,7 +1,7 @@
 from pydantic import BaseModel
 
 from src.cross.enums import CartTypeEnum, ChannelEnum
-from src.domain.entities.cart import Cart
+from src.domain.entities import Cart
 
 
 class CreateCartPresenter(BaseModel):

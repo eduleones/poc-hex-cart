@@ -1,5 +1,5 @@
-from .base import BaseSetItemService
+from .base import BaseSetItemUseCase
 
 
-class CustomerSetItemService(BaseSetItemService):
+class CustomerSetItemUseCase(BaseSetItemUseCase):
     ...

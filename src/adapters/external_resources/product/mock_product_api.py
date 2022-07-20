@@ -16,7 +16,7 @@ class MockProductApi(ProductResourceInterface):
 
         if sku == "78910":
             result.error = BaseError(
-                CartErrorEnum.CART_ITEM_NOT_FOUND,
+                error_code=CartErrorEnum.CART_ITEM_NOT_FOUND,
                 message=f"Sku {sku} not found on Mock Product API",
             )
             result.data = None

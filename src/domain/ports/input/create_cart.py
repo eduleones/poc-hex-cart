@@ -1,6 +1,6 @@
 from abc import ABCMeta, abstractmethod
 
-from src.domain.entities.cart import Cart
+from src.domain.entities import Cart
 from src.domain.ports.output.cart_repository import CartRepositoryInterface
 
 

@@ -1,6 +1,6 @@
 export PYTHONPATH=$(shell pwd)/src/
 export PYTHONDONTWRITEBYTECODE=1
-export ENVIRONMENT=DEVELOPMENT
+export ENVIRONMENT=TEST
 
 .PHONY=help
 
